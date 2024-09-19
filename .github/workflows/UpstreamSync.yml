@@ -17,11 +17,12 @@ jobs:
         steps:
             - name: Checkout target repo
               uses: actions/checkout@v3
+              with:
+                  persist-credentials: false
 
             - name: Sync Upstream
               uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
               with:
-                  token: ${{ secrets.WORKFLOW_TOKEN }}
                   target_repo_token: ${{ secrets.WORKFLOW_TOKEN }}
                   upstream_sync_repo: koalaman/shellcheck
                   upstream_sync_branch: master
